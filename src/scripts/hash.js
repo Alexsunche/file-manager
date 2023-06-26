@@ -1,7 +1,6 @@
 import fs from "fs";
 import crypto from "crypto";
 import path from "path";
-import { sep } from "path";
 import { handleOperationFailed, showDir } from "./index.js";
 
 export const hash = async (currDir, [pathToFile]) => {

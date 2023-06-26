@@ -11,9 +11,11 @@ import {
   rm,
   os,
   hash,
+  rn,
+  compress,
+  decompress
 } from "./scripts/index.js";
 import path from "node:path";
-import { rn } from "./scripts/rn.js";
 
 const args = process.argv.splice(2);
 const USER_NAME = args[0].split("=")[1];
@@ -30,6 +32,7 @@ const initExitProcess = () => {
 
 const handleUp = () => {
   currentDir = path.resolve(currentDir, "..");
+  showDir(currentDir)
 };
 
 const handleLine = async (input) => {
@@ -71,6 +74,12 @@ const handleLine = async (input) => {
       break;
     case "hash":
       hash(currentDir, args);
+      break;
+    case "compress":
+      compress(currentDir, args);
+      break;
+      case "decompress":
+      decompress(currentDir, args);
       break;
     default:
       console.log(`Invalid input. Try to write correct command!`);

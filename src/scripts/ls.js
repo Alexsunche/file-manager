@@ -1,6 +1,6 @@
 import { readdir, stat } from 'fs/promises';
 import path from 'path';
-import { handleOperationFailed } from './index.js';
+import { handleOperationFailed, showDir } from './index.js';
 
 export const ls = async currentDirectory => {
 
@@ -34,6 +34,7 @@ readdir(currentDirectory)
     files.sort((a, b) => a.Name.localeCompare(b.Name));
 
     console.table([...files, ...dirrs]);
+    showDir(currentDirectory)
   })
   .catch(error => {
     handleOperationFailed(error)
