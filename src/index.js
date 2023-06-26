@@ -1,6 +1,17 @@
 import * as readline from "node:readline";
-import * as OS from 'os';
-import { cd, showDir, ls, cat, add, cp, mv, rm, os } from "./scripts/index.js";
+import * as OS from "os";
+import {
+  cd,
+  showDir,
+  ls,
+  cat,
+  add,
+  cp,
+  mv,
+  rm,
+  os,
+  hash,
+} from "./scripts/index.js";
 import path from "node:path";
 import { rn } from "./scripts/rn.js";
 
@@ -57,6 +68,9 @@ const handleLine = async (input) => {
     case "os":
       await os(args[0]);
       showDir(currentDir);
+      break;
+    case "hash":
+      hash(currentDir, args);
       break;
     default:
       console.log(`Invalid input. Try to write correct command!`);
