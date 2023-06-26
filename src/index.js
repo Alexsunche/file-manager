@@ -1,14 +1,13 @@
 import * as readline from "node:readline";
-import os from "os";
-import { sep } from "node:path";
-import { cd, showDir, ls, cat, add, cp, mv, rm } from "./scripts/index.js";
+import * as OS from 'os';
+import { cd, showDir, ls, cat, add, cp, mv, rm, os } from "./scripts/index.js";
 import path from "node:path";
 import { rn } from "./scripts/rn.js";
 
 const args = process.argv.splice(2);
 const USER_NAME = args[0].split("=")[1];
 
-let currentDir = os.homedir();
+let currentDir = OS.homedir();
 
 const greetString = `Welcome to the File Manager, ${USER_NAME}!`;
 const exitString = `Thank you for using File Manager, ${USER_NAME}, goodbye!`;
@@ -54,6 +53,10 @@ const handleLine = async (input) => {
       break;
     case "rm":
       rm(currentDir, args);
+      break;
+    case "os":
+      await os(args[0]);
+      showDir(currentDir);
       break;
     default:
       console.log(`Invalid input. Try to write correct command!`);
