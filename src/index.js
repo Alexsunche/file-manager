@@ -1,7 +1,7 @@
 import * as readline from 'node:readline';
 import os from 'os';
 import { sep } from 'node:path';
-import { cd, showDir, ls, cat, add } from './scripts/index.js'
+import { cd, showDir, ls, cat, add, cp } from './scripts/index.js'
 import path from 'node:path';
 import { rn } from './scripts/rn.js';
 
@@ -46,7 +46,10 @@ const handleLine = async input => {
             break;    
         case 'rn':
             rn(currentDir, args);
-            break;                   
+            break;
+        case 'cp':
+            cp(currentDir, args);
+            break;                       
         default:
             console.log(`Invalid input. Try to write correct command!`);    
     }
