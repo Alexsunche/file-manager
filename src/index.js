@@ -1,7 +1,7 @@
 import * as readline from 'node:readline';
 import os from 'os';
 import { sep } from 'node:path';
-import { cd, showDir } from './scripts/index.js'
+import { cd, showDir, ls } from './scripts/index.js'
 import path from 'node:path';
 
 const args = process.argv.splice(2);
@@ -33,7 +33,10 @@ const handleLine = async input => {
             break;
         case 'cd':
             currentDir = await cd(currentDir, args[0]) || currentDir;
-            break;           
+            break;
+        case 'ls':
+            ls(currentDir);
+            break;                 
         default:
             console.log(`Invalid input. Try to write correct command!`);    
     }
